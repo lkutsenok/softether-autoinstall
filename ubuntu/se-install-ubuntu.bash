@@ -60,8 +60,8 @@ if [ "" == "$PKG_OK" ]; then
 fi
 
 # Download SoftEther | Version 4.34 | Build 9745
-printf "\nDownloading release: ${RED}4.34 RTM${NC} | Build ${RED}9745${NC}\n\n"
-wget -O vpnserver.tar.gz https://www.softether-download.com/files/softether/v4.34-9745-rtm-2020.04.05-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.34-9745-rtm-2020.04.05-linux-x64-64bit.tar.gz
+printf "\nDownloading release: ${RED}4.42 RTM${NC} | Build ${RED}9798${NC}\n\n"
+wget -O vpnserver.tar.gz https://www.softether-download.com/files/softether/v4.42-9798-rtm-2023.06.30-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.42-9798-rtm-2023.06.30-linux-x64-64bit.tar.gz
 tar -xzf vpnserver.tar.gz
 cd vpnserver
 echo $'1\n1\n1' | make &&
@@ -75,9 +75,9 @@ do
     case $opt in
         "Yes")
         apt install -y dnsmasq
-        wget -O dnsmasq.conf https://raw.githubusercontent.com/icoexist/softether-autoinstall/master/dnsmasq.conf
+        wget -O dnsmasq.conf https://raw.githubusercontent.com/lkutsenok/softether-autoinstall/master/dnsmasq.conf
         rm /etc/dnsmasq.conf && mv dnsmasq.conf /etc/dnsmasq.conf
-        wget -O vpnserver-init-bridge https://raw.githubusercontent.com/icoexist/softether-autoinstall/master/vpnserver-init-bridge > /dev/null 2>&1
+        wget -O vpnserver-init-bridge https://raw.githubusercontent.com/lkutsenok/softether-autoinstall/master/vpnserver-init-bridge > /dev/null 2>&1
         mv vpnserver-init-bridge /etc/init.d/vpnserver
         chmod 755 /etc/init.d/vpnserver
         printf "\nSystem daemon created. Registering changes...\n\n"
@@ -94,7 +94,7 @@ do
         break
             ;;
         "No")
-        wget -O vpnserver-init https://raw.githubusercontent.com/icoexist/softether-autoinstall/master/vpnserver-init > /dev/null 2>&1
+        wget -O vpnserver-init https://raw.githubusercontent.com/lkutsenok/softether-autoinstall/master/vpnserver-init > /dev/null 2>&1
         mv vpnserver-init /etc/init.d/vpnserver
         chmod 755 /etc/init.d/vpnserver
         printf "\nSystem daemon created. Registering changes...\n\n"
